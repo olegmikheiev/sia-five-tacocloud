@@ -1,0 +1,33 @@
+body {
+    margin: 25px;
+    background-color: rgb(240, 240, 240);
+    /*font-family: arial, sans-serif;*/
+    /*font-size: 14px;*/
+}
+
+h1 {
+    font-size: 35px;
+    font-weight: normal;
+    color: darkblue;
+    margin-top: 5px;
+}
+
+.grid {
+    margin: 32px;
+    background-color: bisque;
+}
+
+.ingredient-group {
+    margin: 16px;
+    background-color: burlywood;
+}
+
+.label-text {
+    text-decoration: unset;
+    font-style: italic;
+    text-decoration-color: darkslateblue;
+}
+
+.a-link-text {
+    font-size: 18px;
+}
