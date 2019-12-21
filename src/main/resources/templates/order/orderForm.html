@@ -22,32 +22,73 @@
 
     <div>
         <h3>Deliver my taco masterpieces to...</h3>
-        <label for="name">Name:</label>
-        <input type="text" id="name" th:field="*{name}"/><br>
-
-        <label for="street">Street:</label>
-        <input type="text" id="street" th:field="*{street}"/><br>
-
-        <label for="city">City:</label>
-        <input type="text" id="city" th:field="*{city}"/><br>
-
-        <label for="state">State:</label>
-        <input type="text" id="state" th:field="*{state}"/><br>
-
-        <label for="zip">Zip code:</label>
-        <input type="text" id="zip" th:field="*{zip}"/><br>
+        <table border="0">
+            <tbody>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" th:field="*{name}"/></td>
+                <td><span class="validation-error"
+                          th:if="${#fields.hasErrors('name')}"
+                          th:errors="*{name}">Name is invalid</span></td>
+            </tr>
+            <tr>
+                <td><label for="street">Street:</label></td>
+                <td><input type="text" id="street" th:field="*{street}"/></td>
+                <td><span class="validation-error"
+                          th:if="${#fields.hasErrors('street')}"
+                          th:errors="*{street}">Street is invalid</span></td>
+            </tr>
+            <tr>
+                <td><label for="city">City:</label></td>
+                <td><input type="text" id="city" th:field="*{city}"/></td>
+                <td><span class="validation-error"
+                          th:if="${#fields.hasErrors('city')}"
+                          th:errors="*{city}">City is invalid</span></td>
+            <tr>
+                <td><label for="state">State:</label></td>
+                <td><input type="text" id="state" th:field="*{state}"/></td>
+                <td><span class="validation-error"
+                          th:if="${#fields.hasErrors('state')}"
+                          th:errors="*{state}">State is invalid</span></td>
+            </tr>
+            <tr>
+                <td><label for="zip">Zip code:</label></td>
+                <td><input type="text" id="zip" th:field="*{zip}"/></td>
+                <td><span class="validation-error"
+                          th:if="${#fields.hasErrors('zip')}"
+                          th:errors="*{zip}">Zip is invalid</span></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <div>
         <h3>Here's how I'll pay...</h3>
-        <label for="ccNumber">Credit card #:</label>
-        <input type="text" id="ccNumber" th:field="*{ccNumber}"/><br>
-
-        <label for="ccExpiration">Expiration:</label>
-        <input type="text" id="ccExpiration" th:field="*{ccExpiration}"/><br>
-
-        <label for="ccCVV">CVV:</label>
-        <input type="text" id="ccCVV" th:field="*{ccCVV}"/><br>
+        <table border="0">
+            <tbody>
+            <tr>
+                <td><label for="ccNumber">Credit card #:</label></td>
+                <td><input type="text" id="ccNumber" th:field="*{ccNumber}"/></td>
+                <td><span class="validation-error"
+                          th:if="${#fields.hasErrors('ccNumber')}"
+                          th:errors="*{ccNumber}">Card number is invalid</span></td>
+            </tr>
+            <tr>
+                <td><label for="ccExpiration">Expiration:</label></td>
+                <td><input type="text" id="ccExpiration" th:field="*{ccExpiration}"/></td>
+                <td><span class="validation-error"
+                          th:if="${#fields.hasErrors('ccExpiration')}"
+                          th:errors="*{ccExpiration}">Card expiration date is invalid</span></td>
+            </tr>
+            <tr>
+                <td><label for="ccCVV">CVV:</label></td>
+                <td><input type="text" id="ccCVV" th:field="*{ccCVV}"/></td>
+                <td><span class="validation-error"
+                          th:if="${#fields.hasErrors('ccCVV')}"
+                          th:errors="*{ccCVV}">CVV is invalid</span></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <input type="submit" value="Submit order"/>

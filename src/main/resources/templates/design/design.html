@@ -14,7 +14,7 @@
 </div>
 
 <form method="post" th:object="${design}">
-    <div class="grid">
+    <div class="grid" id="ingredients" th:field="ingredients">
 
         <div class="ingredient-group" id="wraps">
             <h3>Designate your wrap:</h3>
@@ -55,10 +55,20 @@
                 <span class="label-text" th:text="${ingredient.name}">INGREDIENT</span><br/>
             </div>
         </div>
+
+        <div>
+            <span class="validation-error"
+                  th:if="${#fields.hasErrors('ingredients')}"
+                  th:errors="*{ingredients}">Card expiration date is invalid</span>
+            </span>
+        </div>
     </div>
 
     <h3>Name your taco creation:</h3>
     <input type="text" th:field="*{name}"/>
+    <span class="validation-error"
+          th:if="${#fields.hasErrors('name')}"
+          th:errors="*{name}">Name is required</span>
     <br/>
 
     <button>Submit your taco!</button>

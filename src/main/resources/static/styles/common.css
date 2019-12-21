@@ -31,3 +31,7 @@ h1 {
 .a-link-text {
     font-size: 18px;
 }
+
+.validation-error {
+    color: red;
+}

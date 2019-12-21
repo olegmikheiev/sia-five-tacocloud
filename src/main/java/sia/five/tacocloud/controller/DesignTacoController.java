@@ -3,6 +3,7 @@ package sia.five.tacocloud.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import sia.five.tacocloud.domain.Ingredient;
 import sia.five.tacocloud.domain.Ingredient.Type;
 import sia.five.tacocloud.domain.Taco;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +20,9 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/design")
 public class DesignTacoController {
+
+    private static final String DESIGN_VIEW = "design/design";
+    private static final String REDIRECT_ORDERS_VIEW = "redirect:orders/current";
 
     private final List<Ingredient> ingredients = ingredientsStub();
 
@@ -31,14 +36,19 @@ public class DesignTacoController {
                     filterByType(ingredients, type));
         }
         model.addAttribute("design", new Taco());
-        return "design/design";
+        return DESIGN_VIEW;
     }
 
     @PostMapping
-    public String processDesign(Taco design) {
+    public String processDesign(@Valid Taco design, Errors errors) {
+        if (errors.hasErrors()) {
+            log.warn("Found errors on submitting Taco Design form:");
+            log.warn("{}", errors);
+            return DESIGN_VIEW;
+        }
         // TODO: Persist design
-        log.info("Processing design: {}...", design);
-        return "redirect:orders/current";
+        log.info("Processing design: {}", design);
+        return REDIRECT_ORDERS_VIEW;
     }
 
     private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
