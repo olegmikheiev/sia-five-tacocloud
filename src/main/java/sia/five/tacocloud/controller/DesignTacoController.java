@@ -35,19 +35,19 @@ public class DesignTacoController {
                     type.toString().toLowerCase(),
                     filterByType(ingredients, type));
         }
-        model.addAttribute("design", new Taco());
+        model.addAttribute("taco", new Taco());
         return DESIGN_VIEW;
     }
 
     @PostMapping
-    public String processDesign(@Valid Taco design, Errors errors) {
+    public String processDesign(@Valid Taco taco, Errors errors) {
         if (errors.hasErrors()) {
             log.warn("Found errors on submitting Taco Design form:");
             log.warn("{}", errors);
             return DESIGN_VIEW;
         }
-        // TODO: Persist design
-        log.info("Processing design: {}", design);
+        // TODO: Persist design in the storage
+        log.info("Processing design: {}", taco);
         return REDIRECT_ORDERS_VIEW;
     }
 
@@ -57,6 +57,7 @@ public class DesignTacoController {
                 .collect(Collectors.toList());
     }
 
+    // TODO: Read ingredients from the storage
     private List<Ingredient> ingredientsStub() {
         return Arrays.asList(
                 new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),

@@ -13,8 +13,8 @@
     <img height="300" th:src="@{/images/WelcomeTacoCloud.jpg}"/>
 </div>
 
-<form method="post" th:object="${design}">
-    <div class="grid" id="ingredients" th:field="ingredients">
+<form method="post" th:object="${taco}">
+    <div class="grid">
 
         <div class="ingredient-group" id="wraps">
             <h3>Designate your wrap:</h3>
@@ -65,7 +65,7 @@
     </div>
 
     <h3>Name your taco creation:</h3>
-    <input type="text" th:field="*{name}"/>
+    <input type="text" id="name" th:field="*{name}"/>
     <span class="validation-error"
           th:if="${#fields.hasErrors('name')}"
           th:errors="*{name}">Name is required</span>
