@@ -7,9 +7,15 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Data
 public class Order {
+
+    private Long id;
+
+    private LocalDateTime placedAt;
+
     @NotBlank(message = "Name is required")
     private String name;
 
@@ -36,4 +42,5 @@ public class Order {
     @Size(min = 3, message = "CVV length should be 3 digits")
     @Digits(integer = 3, fraction = 0, message = "Invalid CVV number")
     private String ccCVV;
+
 }
